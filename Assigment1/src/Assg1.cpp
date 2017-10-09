@@ -12,6 +12,21 @@
 #include "Phonebook.hh"
 using namespace std;
 
+/*
+ * This code assumes that every contact has a first and last name,
+ * seperated by a single space. It was my intent to Scan till a number
+ * came up but that seemed outside the scope of this project.
+ *
+ * to simplify the dynamic memory allocation, empty contacts are intialized to
+ * Name:empty
+ * Number:0
+ *
+ * however since I make the assumtion that all contacts have first and last name
+ * there is no way for a collision to occur and have a legitimate contact be viewed
+ * as empty
+ *
+ */
+
 int main() {
 	ifstream input;
 	Phonebook book=Phonebook(10);
