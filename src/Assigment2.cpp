@@ -46,9 +46,8 @@ int main() {
 				break;
 			case 'L':
 			case 'l':
-				for(int i=0;i<4;i++){
-					cout<<(i+1)*100<<":"<<endl<<flights[i];
-				}
+				listPassengers(flights);
+
 				break;
 			default:
 				cout<<"Sorry, I don't understand that input";
@@ -80,7 +79,7 @@ inline void addPassenger(OrderedLinkedList<Passenger>list[]) {
 
 inline void deletePassenger(OrderedLinkedList<Passenger>list[]) {
 	int flightNumber;
-	string fname,lname,address,phone;
+	string fname,lname;
 	cout<<"Enter flight number: ";
 	flightNumber=getFlightNumber();
 	cout<<"Enter first name: ";
@@ -92,9 +91,29 @@ inline void deletePassenger(OrderedLinkedList<Passenger>list[]) {
 }
 
 inline void findPassenger(OrderedLinkedList<Passenger>list[]) {
+	string fname,lname;
+	cout<<"Enter first name: ";
+	getAphabetic(fname);
+	cout<<"Enter last name: ";
+	getAphabetic(lname);
+	for(int i=0;i<4;i++){
+		Passenger tosearch(fname,lname,"","");
+		Passenger *p=list[i].search(tosearch);
+		if(p!=NULL){
+			cout<<"Flight Number: "<<(i+1)*100<<endl;
+			cout<<"First Name: "<<p->getFirst()<<endl;
+			cout<<"Last Name: "<<p->getLast()<<endl;
+			cout<<"Address: "<<p->getAddress()<<endl;
+			cout<<"Phone: "<<p->getPhone()<<endl;
+		}
+	}
 }
 
 inline void listPassengers(OrderedLinkedList<Passenger> list[]) {
+	int flightNumber;
+	cout<<"Enter flight number: ";
+	flightNumber=getFlightNumber();
+	cout<<list[flightNumber/100-1];
 }
 inline int getFlightNumber(){
 	string raw;

@@ -11,7 +11,7 @@
 template <class T>
 class OrderedLinkedList : public LinkedList<T>{
 public:
-	T& search(T&);
+	T* search(T&);
 	virtual void insert(T&);
 };
 
@@ -32,13 +32,13 @@ void OrderedLinkedList<T>::insert(T& object) {
 }
 
 template<class T>
-T& OrderedLinkedList<T>::search(T& object) {
+T* OrderedLinkedList<T>::search(T& object) {
 	node<T>* p =this->head;
 	while(p!=NULL&&p->data!=object){
 		p=p->next;
 	}
 	if(p!=NULL){
-		return p->data;
+		return &(p->data);
 	}
 	return NULL;
 
