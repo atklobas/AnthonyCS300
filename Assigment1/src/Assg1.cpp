@@ -28,16 +28,21 @@ using namespace std;
  */
 
 int main() {
+	//needs to be a c style string
+	char filename[]="phone.txt";
 	ifstream input;
 	Phonebook book=Phonebook(10);
-	input.open ("phonebook.txt");
-
+	input.open (filename);
+int te=0;
 	while(!input.eof()){
 		string fname,lname;
 		int number;
 		input>>fname;
 		input>>lname;
 		input>>number;
+		if(fname.empty()){
+			continue;
+		}
 		book.add(Contact(fname+" "+lname,number));
 	}
 	cout<<"***MY PHONEBOOK APPLICATION***"<<endl<<"Please choose an operation:"<<endl;
@@ -86,6 +91,14 @@ int main() {
 		}
 		cout<<endl;
 	}
+	//close, output and close that
+	input.close();
+	ofstream output;
+	output.open(filename);
+	for(int i=0;i<book.size();i++){
+		output<<book.get(i)<<endl;
+	}
+	output.close();
 	cout<<"Goodbye";
 	//for(int i=0;i<10;i++){
 	//	book.add(Contact("contact",i));
