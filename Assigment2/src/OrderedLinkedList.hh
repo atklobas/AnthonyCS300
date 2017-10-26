@@ -13,6 +13,7 @@ class OrderedLinkedList : public LinkedList<T>{
 public:
 	T* search(T&);
 	virtual void insert(T&);
+	virtual void deleteNode(T&);
 };
 
 template<class T>
@@ -43,6 +44,34 @@ T* OrderedLinkedList<T>::search(T& object) {
 	}
 	return NULL;
 
+}
+
+template<class T>
+void OrderedLinkedList<T>::deleteNode(T& item) {
+	if(this->head == NULL)
+			cerr<<"empty list";
+		else{
+			if(this->head->data == item){
+				node<T>* p = this->head;
+				this->head = this->head->next;
+				delete p;
+				this->count--;
+				if(this->head==NULL) this->last = NULL;
+			}else{
+				node<T>* p = this->head;
+				node<T>* q = p->next;
+				while(q!=NULL && q->data < item){
+					p = q;
+					q = q->next;
+				}
+				if(q->data==item){
+					p->next = q->next;
+					this->count--;
+					if(this->last == q) this->last = p;
+					delete q;
+				}
+			}
+		}
 }
 
 #endif /* ORDEREDLINKEDLIST_HH_ */

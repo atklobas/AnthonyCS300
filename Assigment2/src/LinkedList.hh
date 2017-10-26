@@ -27,7 +27,7 @@ class LinkedList{
 		//void inserFirst(T&);
 		//void inserLast(T&);
 		virtual void insert(T&);
-		void deleteNode(T&);
+		virtual void deleteNode(T&);
 		void destroylist();
 		LinkedList<T>& operator=(LinkedList<T>&);
 		template <class U>
