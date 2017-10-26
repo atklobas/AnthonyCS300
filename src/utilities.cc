@@ -16,7 +16,6 @@ void getString(std::string& buffer, std::string message, std::istream& in) {
 
 void getRegex(std::string& buffer, std::string regex,std::string message, std::istream& in) {
 	std::regex e(regex);
-	buffer="test";
 	getline(in,buffer);
 	while(!std::regex_match(buffer, e)){
 		cout<<message;

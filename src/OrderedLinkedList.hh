@@ -17,6 +17,7 @@ public:
 
 template<class T>
 void OrderedLinkedList<T>::insert(T& object) {
+	this->count++;
 	//All problems in computer science can be solved by another level of indirection - David Wheeler
 	node<T>** p = &(this->head);
 	node<T> *temp = new node<T>;

@@ -26,26 +26,21 @@ int main() {
 		cout<<"A (add) | S (Search) | D (Delete) | L (List) | Q (Quit): ";
 		string in;
 		getline(cin,in);
-		char s=in[0];
+		char s=in[0]&0b11011111;//the difference between lower and upper case is 1 bit
 		switch(s){
 			case 'Q':
-			case 'q':
 				//The dreaded goto
 				goto quit;
 			case 'A':
-			case 'a':
 				addPassenger(flights);
 				break;
 			case 'S':
-			case 's':
 				findPassenger(flights);
 				break;
 			case 'D':
-			case 'd':
 				deletePassenger(flights);
 				break;
 			case 'L':
-			case 'l':
 				listPassengers(flights);
 
 				break;
