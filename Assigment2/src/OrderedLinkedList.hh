@@ -36,10 +36,11 @@ void OrderedLinkedList<T>::insert(T& object) {
 template<class T>
 T* OrderedLinkedList<T>::search(T& object) {
 	node<T>* p =this->head;
-	while(p!=NULL&&p->data!=object){
+	while(p!=NULL&&p->data<object){
+		cout<<"here";
 		p=p->next;
 	}
-	if(p!=NULL){
+	if(p!=NULL && p->data==object){
 		return &(p->data);
 	}
 	return NULL;
@@ -64,7 +65,7 @@ void OrderedLinkedList<T>::deleteNode(T& item) {
 					p = q;
 					q = q->next;
 				}
-				if(q->data==item){
+				if(q!=NULL && q->data==item){
 					p->next = q->next;
 					this->count--;
 					if(this->last == q) this->last = p;
