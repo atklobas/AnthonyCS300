@@ -5,8 +5,8 @@
  *      Author: anthony
  */
 
-#ifndef STACK_HH_
-#define STACK_HH_
+#ifndef LINKEDSTACK_H_
+#define LINKEDSTACK_H_
 
 template<class T> struct node {
 	T data;
@@ -42,4 +42,4 @@ inline bool LinkedStack<T>::empty() {
 	return top==NULL;
 }
 
-#endif /* STACK_HH_ */
+#endif /* LINKEDSTACK_H_ */

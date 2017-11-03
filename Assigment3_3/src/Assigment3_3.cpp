@@ -1,5 +1,7 @@
 #include <iostream>
 #include "Stack.hh"
+#define SEP -1
+#define END -2
 using namespace std;
 void ScrollTo(int to,LinkedStack<int> &before,LinkedStack<int> &after);
 
@@ -17,7 +19,7 @@ int main() {
 	LinkedStack<int> after;
 
 	//add marker for start of first input
-	int digit=-1;
+	int digit=SEP;
 	before.push(digit);
 
 	//load input
@@ -31,7 +33,7 @@ int main() {
 	}
 
 	//add marker for start of second input
-	digit=-1;
+	digit=SEP;
 	before.push(digit);
 
 	//load input
@@ -46,21 +48,21 @@ int main() {
 	int i,j,c=0;
 	do{
 		//scroll to end and take last digit of second input
-		ScrollTo(-3,before,after);
+		ScrollTo(END,before,after);
 		i=before.pop();
-		if (i==-1){
+		if (i==SEP){
 			before.push(i);
 			i=0;
 		}
 		//scroll end of first input and take last digit
-		ScrollTo(-1,after,before);
+		ScrollTo(SEP,after,before);
 		j=before.pop();
-		if (j==-1){
+		if (j==SEP){
 			before.push(j);
 			j=0;
 		}
 		//scroll to beginning
-		ScrollTo(-3,after,before);
+		ScrollTo(END,after,before);
 		//add digits and carry
 		c=i+j+c;
 		//get the least significant digit and add to front
@@ -73,7 +75,7 @@ int main() {
 	}while(i!=0||j!=0);//if either of them has digets left, continue
 
 	//scroll to start and print
-	ScrollTo(-3,after,before);
+	ScrollTo(END,after,before);
 	int temp=after.pop();
 	while(temp>=0){
 		cout<<temp;
