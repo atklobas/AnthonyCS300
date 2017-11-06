@@ -21,16 +21,13 @@ int getFlightNumber();
 int main() {
 	OrderedLinkedList<Passenger> flights[4];
 	cout<<"***DELTA AITLINES***"<<endl<<"Please choose an operation:"<<endl;
-
-	while(true){
+	char s='A';
+	while(s!='Q'){
 		cout<<"A (add) | S (Search) | D (Delete) | L (List) | Q (Quit): ";
-		string in;
+		string in="";
 		getline(cin,in);
-		char s=in[0]&0b11011111;//the difference between lower and upper case is 1 bit
+		s=in[0]&0b11011111;//the difference between lower and upper case is 1 bit
 		switch(s){
-			case 'Q':
-				//The dreaded goto
-				goto quit;
 			case 'A':
 				addPassenger(flights);
 				break;
@@ -42,13 +39,12 @@ int main() {
 				break;
 			case 'L':
 				listPassengers(flights);
-
 				break;
 			default:
-				cout<<"Sorry, I don't understand that input";
+				cout<<"Sorry, I don't understand that input"<<endl;
+			case 'Q':;
 		}
 	}
-	quit:;
 	cout<<"goodbye!"<<endl;
 
 	return 0;
