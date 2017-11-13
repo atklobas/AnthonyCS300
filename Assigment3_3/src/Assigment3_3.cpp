@@ -46,13 +46,16 @@ int main() {
 			before.push(digit);
 	}
 	int i,j,c=0;
+	bool ended;
 	do{
+		ended=false;
 		//scroll to end and take last digit of second input
 		ScrollTo(END,before,after);
 		i=before.pop();
 		if (i==SEP){
 			before.push(i);
 			i=0;
+			ended=true;
 		}
 		//scroll end of first input and take last digit
 		ScrollTo(SEP,after,before);
@@ -60,6 +63,8 @@ int main() {
 		if (j==SEP){
 			before.push(j);
 			j=0;
+		}else{
+			ended&=true;
 		}
 		//scroll to beginning
 		ScrollTo(END,after,before);
@@ -67,12 +72,12 @@ int main() {
 		c=i+j+c;
 		//get the least significant digit and add to front
 		int toAdd=c%10;
-		if(c!=0)
+		if(!ended)
 			before.push(toAdd);
 		//compute carry term
 		c/=10;
 
-	}while(i!=0||j!=0);//if either of them has digets left, continue
+	}while(!ended);//if either of them has digets left, continue
 
 	//scroll to start and print
 	ScrollTo(END,after,before);
