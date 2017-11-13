@@ -72,7 +72,7 @@ int main() {
 		c=i+j+c;
 		//get the least significant digit and add to front
 		int toAdd=c%10;
-		if(!ended)
+		if(!ended||toAdd!=0)
 			before.push(toAdd);
 		//compute carry term
 		c/=10;
