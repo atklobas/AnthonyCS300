@@ -13,7 +13,7 @@ template<class T> struct node {
 	node<T>* next=NULL;
 };
 template<class T> class LinkedStack {
-	node<T> *top=NULL;
+	node<T> *topNode=NULL;
 public:
 	void push(T&);
 	T pop();
@@ -24,14 +24,14 @@ template<class T>
 inline void LinkedStack<T>::push(T& item) {
 	node<T> *n = new node<T>;
 	n->data=item;
-	n->next=top;
-	top=n;
+	n->next=topNode;
+	topNode=n;
 }
 
 template<class T>
 inline T LinkedStack<T>::pop() {
-	node<T> *n=top;
-	top=top->next;
+	node<T> *n=topNode;
+	topNode=topNode->next;
 	T data=n->data;
 	delete n;
 	return data;
@@ -39,7 +39,7 @@ inline T LinkedStack<T>::pop() {
 
 template<class T>
 inline bool LinkedStack<T>::empty() {
-	return top==NULL;
+	return topNode==NULL;
 }
 
 #endif /* LINKEDSTACK_H_ */

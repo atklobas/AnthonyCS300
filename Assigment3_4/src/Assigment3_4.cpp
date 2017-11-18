@@ -1,4 +1,5 @@
 #include <iostream>
+#include "utilities.hh"
 using namespace std;
 
 void reverseDigits(int i){
@@ -11,7 +12,7 @@ void reverseDigits(int i){
 int main() {
 	cout<<"Enter a number: ";
 	int i;
-	cin>>i;
+	getInteger(i,"Sorry, You must input an Integer");
 	reverseDigits(i);
 	return 0;
 }

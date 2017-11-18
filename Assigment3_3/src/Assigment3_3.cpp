@@ -55,7 +55,7 @@ int main() {
 		if (i==SEP){
 			before.push(i);
 			i=0;
-			ended=true;
+			ended=true;//if the first number is depleted mark that you 'may' be done
 		}
 		//scroll end of first input and take last digit
 		ScrollTo(SEP,after,before);
@@ -64,7 +64,7 @@ int main() {
 			before.push(j);
 			j=0;
 		}else{
-			ended&=true;
+			ended=false;//if the second number is not empty mark that you are not done
 		}
 		//scroll to beginning
 		ScrollTo(END,after,before);
